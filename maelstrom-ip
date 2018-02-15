@@ -1,12 +1,23 @@
 #!/usr/bin/perl
 
+use IO::Socket::INET;
+
+$| = 1;
+my $socket;
+
+
+
 my $command;
+my $port = 443;
 my $upper = 255;
 my $lower = 100;
 my $timer;
 
+
+
 while(1){
 
+START:
     my $i = int(rand($upper - $lower)) + $lower;
     my $j = int(rand($upper - $lower)) + $lower;
     my $k = int(rand($upper - $lower)) + $lower;
@@ -19,6 +30,19 @@ while(1){
     $command .= $k;
     $command .= ".";
     $command .= $l;
-    `nc -w $timer -c $command 80 &> /dev/null`;
+
+    $socket = IO::Socket::INET->new (
+    PeerHost => $command,
+    PeerPort => $port,
+    Proto => 'tcp',
+    Timeout => 1,
+    ) or print "No Connection\n" and goto START;
+
+    print "Success! $command \n";
+    `echo $command >> addresses.txt`;
+
+
+
+
 
 }
