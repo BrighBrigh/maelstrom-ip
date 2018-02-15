@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+
+my $command;
+my $i;
+my $j;
+my $k;
+my $l;
+my $upper = 255;
+my $lower = 100;
+my $timer;
+
+while(1){
+  $i = int(rand($upper - $lower)) + $lower;
+  $j = int(rand($upper - $lower)) + $lower; 
+  $k = int(rand($upper - $lower)) + $lower; 
+  $l = int(rand($upper - $lower)) + $lower; 
+  $timer = int(rand(6)) + 1;
+  $command = $i;
+  $command .= ".";
+  $command .= $j;
+  $command .= ".";
+  $command .= $k;
+  $command .= ".";
+  $command .= $l;
+  `nc -w $timer -c $command 80 &> /dev/null`; 
+}
