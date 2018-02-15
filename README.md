@@ -13,7 +13,7 @@ To run as a service create `maelstrom-ip.service` at `/etc/systemd/system` and a
 Description=maestrom-ip
 
 [Service]
-ExecStart=/usr/bin/maelstrom-ip
+ExecStart=/path/to/maelstrom-ip
 
 [Install]
 WantedBy=multi-user.target
