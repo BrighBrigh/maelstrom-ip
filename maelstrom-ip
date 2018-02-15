@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 
-
 my $command;
 my $upper = 255;
 my $lower = 100;
@@ -20,7 +19,6 @@ while(1){
     $command .= $k;
     $command .= ".";
     $command .= $l;
-    print $command;
     `nc -w $timer -c $command 80 &> /dev/null`;
 
 }
