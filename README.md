@@ -6,3 +6,4 @@ A simple perl script with low system resource usage that makes tcp connections t
 perl >= v5.26.1 <br />
 netcat >= v0.7.1 <br />
 
+# Usage
