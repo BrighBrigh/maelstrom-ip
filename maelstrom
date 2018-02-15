@@ -14,7 +14,7 @@ while(1){
   $j = int(rand($upper - $lower)) + $lower; 
   $k = int(rand($upper - $lower)) + $lower; 
   $l = int(rand($upper - $lower)) + $lower; 
-  $timer = int(rand(8)) + 1;
+  $timer = int(rand(6)) + 1;
   $command = $i;
   $command .= ".";
   $command .= $j;
