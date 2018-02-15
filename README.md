@@ -21,7 +21,7 @@ WantedBy=multi-user.target
 
 
 # Dependencies
-perl >= v5.26.1 <br />
-netcat >= v0.7.1 <br />
+perl >= 5.26.1 <br />
+netcat >= 0.7.1 <br />
 
 
