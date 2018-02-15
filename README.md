@@ -4,9 +4,7 @@ A simple perl script with low system resource usage that makes tcp connections t
 
 # Usage
 
-Simply run <br />
-`./maelstrom` <br />
-to start the script <br />
+Simply run `./maelstrom` to start the script. <br />
 
 
 # Dependencies
