@@ -8,7 +8,7 @@ Simply run `./maelstrom-ip` to start the script. <br />
 
 To run as a service create `maelstrom-ip.service` at `/etc/systemd/system` and add the following: <br />
 
-```perl
+```
 [Unit]
 Description=maestrom-ip
 
