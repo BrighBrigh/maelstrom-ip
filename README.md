@@ -1,5 +1,4 @@
 # maelstrom-ip
-# An IP connection muddler written in Perl
 
 A simple perl script with low system resource usage that makes tcp connections to random IP address in order to obfuscate the IP connections seen by your ISP.
 
