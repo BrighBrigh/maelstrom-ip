@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-my $ping;
-my $sleep;
 my $command;
 my $i;
 my $j;
@@ -11,16 +9,16 @@ my $upper = 255;
 my $lower = 100;
 
 while(1){
-	$i = int(rand($upper - $lower)) + $lower;
+  $i = int(rand($upper - $lower)) + $lower;
   $j = int(rand($upper - $lower)) + $lower; 
   $k = int(rand($upper - $lower)) + $lower; 
   $l = int(rand($upper - $lower)) + $lower; 
-	$command = $i;
-	$command .= ".";
-	$command .= $j;
+  $command = $i;
   $command .= ".";
-	$command .= $k;
+  $command .= $j;
   $command .= ".";
-	$command .= $l;
-	`nc -w 5 $command 80 &> /dev/null`; 
+  $command .= $k;
+  $command .= ".";
+  $command .= $l;
+  `nc -w 5 $command 80 &> /dev/null`; 
 }
