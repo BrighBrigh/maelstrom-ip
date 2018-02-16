@@ -13,11 +13,18 @@ my $upper = 255;
 my $lower = 100;
 my $timer;
 
+use strict;
+use warnings;
+
+my $filename = $0;
+open(my $fh, '<:encoding(UTF-8)', $filename)
+or die "Could not open file '$filename' $!";
+
 
 
 while(1){
 
-START:
+    START:
     my $i = int(rand($upper - $lower)) + $lower;
     my $j = int(rand($upper - $lower)) + $lower;
     my $k = int(rand($upper - $lower)) + $lower;
@@ -35,11 +42,19 @@ START:
     PeerHost => $command,
     PeerPort => $port,
     Proto => 'tcp',
-    Timeout => 1,
-    ) or print "No Connection\n" and goto START;
+    Timeout => 2,
+    ) or print "No Connection on $command\n" and goto START;
+
+    sleep(5);
 
     print "Success! $command \n";
     `echo $command >> addresses.txt`;
+
+
+
+    $socket->close();
+
+
 
 
 
