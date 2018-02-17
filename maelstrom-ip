@@ -1,33 +1,24 @@
 #!/usr/bin/perl
 
 use IO::Socket::INET;
+use strict;
+use warnings;
 
 $| = 1;
 my $socket;
-
-
-
 my $command;
 my $port = 443;
 my $upper = 255;
 my $lower = 100;
-my $timer;
+my $fh;
 
-use strict;
-use warnings;
 
-my $filename = $0;
-open(my $fh, '<:encoding(UTF-8)', $filename)
-or die "Could not open file '$filename' $!";
+sub generate(){
 
-while(1){
-
-    START:
     my $i = int(rand($upper - $lower)) + $lower;
     my $j = int(rand($upper - $lower)) + $lower;
     my $k = int(rand($upper - $lower)) + $lower;
     my $l = int(rand($upper - $lower)) + $lower;
-    $timer = int(rand(6)) + 1;
     $command = $i;
     $command .= ".";
     $command .= $j;
@@ -41,15 +32,49 @@ while(1){
     PeerPort => $port,
     Proto => 'tcp',
     Timeout => 2,
-    ) or print "No Connection on $command\n" and goto START;
+    ) or return;
+
+    `echo $command >> addresses.txt`;
+
+    $socket->close();
+    return;
+
+}
+
+sub connectAddr(){
+
+my $filename = 'addresses.txt';
+if (open(my $fh, '<:encoding(UTF-8)', $filename)) {
+
+  while (my $address = <$fh>) {
+
+    chomp $address;
+
+    $socket = IO::Socket::INET->new (
+    PeerHost => $address,
+    PeerPort => $port,
+    Proto => 'tcp',
+    Timeout => 3,
+    ) or next;
+
+    print "Success @ $address!\n";
 
     sleep(5);
 
-    print "Success! $command \n";
-    `echo $command >> addresses.txt`;
-
-
-
     $socket->close();
+
+  }
+} else {
+  warn "Could not open file '$filename' $!";
+}
+
+return;
+
+}
+
+while(1){
+
+    generate();
+    connectAddr();
 
 }
