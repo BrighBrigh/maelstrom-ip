@@ -57,8 +57,6 @@ if (open(my $fh, '<:encoding(UTF-8)', $filename)) {
     Timeout => 3,
     ) or next;
 
-    print "Success @ $address!\n";
-
     sleep(5);
 
     $socket->close();
