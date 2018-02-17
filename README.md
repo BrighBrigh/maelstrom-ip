@@ -6,9 +6,22 @@ A simple perl script with low system resource usage that makes tcp connections t
 
 Simply run `./maelstrom-ip` to start the script. <br />
 
+To run as a service, create a systemd unit file at `/etc/systemd/system/maelstrom-ip.service` and add the following: <br />
+
+```
+[Unit]
+Description=maestrom-ip
+
+[Service]
+ExecStart=/path/to/maelstrom-ip
+
+[Install]
+WantedBy=multi-user.target
+```
+
 
 # Dependencies
-perl >= v5.26.1 <br />
-netcat >= v0.7.1 <br />
+perl >= 5.26.1 <br />
+netcat >= 0.7.1 <br />
 
 
